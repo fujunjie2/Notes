@@ -1,6 +1,7 @@
 package com.knight.springboot.web;
 
 
+import com.knight.springboot.pojo.qo.NamedQo;
 import com.knight.springboot.pojo.vo.NamedVo;
 import com.knight.springboot.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -8,3 +8,5 @@ spring:
     database: 0
     password:
     timeout: 1000
+  boot:
+    enableautoconfiguration: true   # 这个用来控制springboot 的自动装配
