@@ -1,4 +1,4 @@
-package Sort;
+package Sort.firstTime;
 
 public class JQuickSort {
 
@@ -14,13 +14,12 @@ public class JQuickSort {
     }
 
 
-    public static int[] quickSort(int[] arr, int left, int right) {
+    public static void quickSort(int[] arr, int left, int right) {
         if (left < right) {
             int partitionIndex = partition(arr, left, right);
             quickSort(arr, left, partitionIndex - 1);
             quickSort(arr, partitionIndex + 1, right);
         }
-        return arr;
     }
 
     public static int partition(int[] arr, int left, int right) {
