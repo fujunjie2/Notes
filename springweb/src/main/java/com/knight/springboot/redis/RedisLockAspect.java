@@ -23,7 +23,7 @@ public class RedisLockAspect {
     private final RedisSimpleLock redisSimpleLock;
 
     @Pointcut("@annotation(com.knight.springboot.redis.UseRedisLock)")
-    public void lockAspect(){};
+    public void lockAspect(){}
 
 
 
@@ -36,9 +36,7 @@ public class RedisLockAspect {
 
         String methodName = signature.getName();
 
-        Class[] parameterTypes = signature.getParameterTypes();
-
-        Method method = target.getClass().getMethod(methodName, parameterTypes);
+        Method method = target.getClass().getMethod(methodName, signature.getParameterTypes());
 
         UseRedisLock annotation = method.getAnnotation(UseRedisLock.class);
 
@@ -50,8 +48,6 @@ public class RedisLockAspect {
                 throw new Exception("系统繁忙，请稍后");
             }
             ret =  joinPoint.proceed();
-        } catch (Exception e) {
-            throw e;
         } finally {
             redisSimpleLock.releaseLock(lockKey);
         }
@@ -92,8 +88,9 @@ public class RedisLockAspect {
                     if (arg instanceof String || arg instanceof Integer) {
                         return prefix + arg;
                     }
+                } else {
+                    throw new Exception("未找到Redis key");
                 }
-                throw new Exception("未找到Redis key");
             }
         }
 
