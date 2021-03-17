@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Configuration;
 public class AutoDemo {
 
     static {
-        System.out.println("\nconfiguration\n");
+
     }
 }
