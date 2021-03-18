@@ -31,7 +31,6 @@ public class NioClient {
             selector.select();
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             while (iterator.hasNext()){
-                System.out.println("jjj");
 
                 SelectionKey key = iterator.next();
                 iterator.remove();
@@ -55,8 +54,7 @@ public class NioClient {
         byteBuffer.put(info.getBytes("UTF-8"));
         byteBuffer.flip();
         clientChannel.write(byteBuffer);
-        //clientChannel.register(key.selector(),SelectionKey.OP_READ);
-        clientChannel.close();
+        clientChannel.register(key.selector(),SelectionKey.OP_READ);
     }
 
     public void doRead(SelectionKey key) throws IOException {
@@ -66,7 +64,7 @@ public class NioClient {
         String msg = new String(data).trim();
         System.out.println("服务端发送消息："+msg);
         clientChannel.close();
-        key.selector().close();
+//        key.selector().close();
     }
 
     public static void main(String[] args) throws IOException{

@@ -7,6 +7,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -36,12 +37,12 @@ public class NioServer {
         while (true) {
             // 阻塞方法
             int keyNumber = selector.select();
-            Set<SelectionKey> keys = selector.keys();
+            Set<SelectionKey> keys = selector.selectedKeys();
 
             Iterator<SelectionKey> iterator = keys.iterator();
             while (iterator.hasNext()) {
                 SelectionKey nextKey = iterator.next();
-//                iterator.remove();
+                iterator.remove();
 
                 if (nextKey.isAcceptable()) {
                     doAccept(nextKey);
@@ -90,6 +91,9 @@ public class NioServer {
             byteBuffer.clear();
             bytesRead = clientChannel.read(byteBuffer);
         }
+
+        clientChannel.write(ByteBuffer.wrap("haha".getBytes(StandardCharsets.UTF_8)));
+
         if (bytesRead==-1){
             clientChannel.close();
         }
