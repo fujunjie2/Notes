@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 public class Rb {
 
-    public static String HOST = "192.168.1.223";
+    public static String HOST = "192.168.0.50";
 
     public static boolean DURABLE = false;
 
