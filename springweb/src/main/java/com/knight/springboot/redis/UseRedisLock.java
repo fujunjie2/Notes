@@ -31,4 +31,6 @@ public @interface UseRedisLock {
      */
     int retryInterval() default 0;
 
+    int maxHoldSeconds() default 10;
+
 }

@@ -60,7 +60,7 @@ public class RedisLockAspect {
     public boolean tryLock(String key, UseRedisLock annotation) throws InterruptedException {
         for (int i = 0; i < annotation.retryTime(); i++) {
             System.out.println("正在尝试获取锁， 次数" + i);
-            if (redisSimpleLock.lock(key)) {
+            if (redisSimpleLock.lock(key, annotation.maxHoldSeconds())) {
                 System.out.println("获取到锁");
                 return true;
             } else {

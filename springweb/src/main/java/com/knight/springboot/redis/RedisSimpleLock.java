@@ -14,11 +14,11 @@ public class RedisSimpleLock {
     private final StringRedisTemplate stringRedisTemplate;
 
 
-    public boolean lock(String key) {
+    public boolean lock(String key, int lockHoldSecond) {
         if (stringRedisTemplate.hasKey(key)) {
             return false;
         }
-        stringRedisTemplate.opsForValue().set(key, "", 15, TimeUnit.SECONDS);
+        stringRedisTemplate.opsForValue().set(key, "", lockHoldSecond, TimeUnit.SECONDS);
 
         return true;
     }
