@@ -19,7 +19,7 @@ public class BinaryTree<T> {
 
         BinaryTreeNode<String> root = tree.create(str, 0);
 
-        tree.levelOrder2(root);
+        tree.levelOrder(root);
         System.out.println();
 //        tree.preOrder(root);
 //        System.out.println();
@@ -85,6 +85,8 @@ public class BinaryTree<T> {
                 arrayDeque.add(s.right);
             }
         }
+
+        System.out.println(1);
     }
     // 使用数组需要提前知道树节点个数
     public void levelOrder2(BinaryTreeNode rootNode) {
