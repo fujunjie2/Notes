@@ -10,3 +10,26 @@ spring:
     timeout: 1000
   boot:
     enableautoconfiguration: true   # 这个用来控制springboot 的自动装配
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.0.50:3306/wechat?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+      username: root
+      password: 524741
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-on-borrow: true
+      test-on-return: false
+      test-while-idle: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=3000
+
+
