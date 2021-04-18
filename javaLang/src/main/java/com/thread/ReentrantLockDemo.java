@@ -61,7 +61,7 @@ class LockTask implements Runnable{
 
     private int k;
 
-    LockTask(LockClass simpleClass,  int k ) {
+    LockTask(LockClass simpleClass,  int k) {
         this.lockClass = simpleClass;
         this.k = k;
     }

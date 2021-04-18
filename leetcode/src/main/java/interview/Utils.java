@@ -1,8 +1,15 @@
 package interview;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Utils {
+
+	public static void main(String[] args) {
+
+	}
 
 	/**
 	 * Question1, sort by firstName , lastName and  ext,
@@ -10,6 +17,13 @@ public class Utils {
 	 * ext, please note lastName and ext can be empty string or null
 	 **/
 	public static List<Extension> sortByName(List<Extension> extensions) {
+		if (Objects.nonNull(extensions)) {
+			return extensions.stream().sorted(
+					Comparator.comparing(Extension::getFirstName)
+					 		  .thenComparing(Extension::getLastName)
+					 		  .thenComparing(Extension::getExt)
+			).collect(Collectors.toList());
+		}
 		return null;
 	}
 

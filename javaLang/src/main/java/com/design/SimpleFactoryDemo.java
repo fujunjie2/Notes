@@ -1,6 +1,5 @@
 package com.design;
 
-import java.util.Objects;
 
 public class SimpleFactoryDemo {
 
