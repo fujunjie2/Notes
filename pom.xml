@@ -14,7 +14,7 @@
         <module>netty</module>
         <module>spring</module>
         <module>broker</module>
-        <module>springweb</module>
+        <module>springboot</module>
         <module>dubbo</module>
     </modules>
 

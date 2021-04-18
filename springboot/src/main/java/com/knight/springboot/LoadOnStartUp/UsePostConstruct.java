@@ -10,7 +10,7 @@ public class UsePostConstruct {
 
 
     @PostConstruct
-    public void init() {
+    public void inits() {
         System.out.println("postConstruct_1");
     }
 }
