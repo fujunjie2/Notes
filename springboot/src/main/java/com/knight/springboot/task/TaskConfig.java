@@ -36,8 +36,10 @@ public class TaskConfig implements ApplicationRunner {
 
                     String taskName = dynamicTask.taskName();
                     String cron = dynamicTask.cron();
-
-                    System.out.println(taskName + " ---" + cron);
+                    String methodName = method.getName();
+                    String className = cla.getName();
+                    System.out.println(className + "." + methodName);
+                    System.out.println(taskName + " --- " + cron);
 
                 }
             }
