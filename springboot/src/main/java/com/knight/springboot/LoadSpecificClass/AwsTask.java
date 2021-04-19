@@ -1,4 +1,4 @@
-package com.knight.springboot.task;
+package com.knight.springboot.LoadSpecificClass;
 
 @DynamicTaskService(appName = "AWS")
 public class AwsTask {
