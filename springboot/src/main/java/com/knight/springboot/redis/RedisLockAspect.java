@@ -11,6 +11,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
@@ -24,6 +25,11 @@ public class RedisLockAspect {
 
     @Pointcut("@annotation(com.knight.springboot.redis.UseRedisLock)")
     public void lockAspect(){}
+
+    @Around("@annotation(useRedisLock)")
+    public Object doAspect(ProceedingJoinPoint joinPoint, UseRedisLock useRedisLock) throws Throwable {
+        return joinPoint.proceed();
+    }
 
 
 
