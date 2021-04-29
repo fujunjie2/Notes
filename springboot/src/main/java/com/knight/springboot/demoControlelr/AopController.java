@@ -23,4 +23,19 @@ public class AopController {
         demoService.trancMethod();
     }
 
+
+    @GetMapping("save")
+    public void saveTest() {
+        demoService.saveTest();
+    }
+    @GetMapping("get")
+    public void getTest() {
+        demoService.getTest();
+    }
+
+    @GetMapping("getC")
+    public void getTestC() {
+        demoService.getTestC();
+    }
+
 }

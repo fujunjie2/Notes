@@ -1,6 +1,6 @@
 package com.knight.springboot.utils;
 
-import com.google.common.collect.Lists;
+//import com.google.common.collect.Lists;
 import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.Field;
@@ -68,7 +68,7 @@ public class ClassUtils {
      * @return
      */
     public static List<Method> getAllMethod(Class<?> clazz) {
-        List<Method> result = Lists.newArrayList();
+        List<Method> result = new ArrayList<>();
         result.addAll(Arrays.asList(clazz.getDeclaredMethods()));
         Class<?> superclass = clazz.getSuperclass();
         if (Object.class.equals(superclass)) {
@@ -85,7 +85,7 @@ public class ClassUtils {
      * @return
      */
     public static List<Field> getAllField(Class<?> clazz) {
-        ArrayList<Field> result = Lists.newArrayList();
+        ArrayList<Field> result = new ArrayList<>();
         result.addAll(Arrays.asList(clazz.getDeclaredFields()));
         
         Class<?> superclass = clazz.getSuperclass();
