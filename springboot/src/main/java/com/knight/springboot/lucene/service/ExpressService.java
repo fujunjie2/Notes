@@ -1,11 +1,10 @@
 package com.knight.springboot.lucene.service;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.knight.springboot.entity.ExpressMessage;
-import com.knight.springboot.mapper.ExpressMapper;
+import com.knight.springboot.mybatis.mapper.ExpressMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

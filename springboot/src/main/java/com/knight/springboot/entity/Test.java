@@ -3,8 +3,8 @@ package com.knight.springboot.entity;
 import com.baomidou.mybatisplus.annotation.IEnum;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.knight.springboot.mybatis.ColumnAppend;
-import com.knight.springboot.mybatis.ColumnTransfer;
+import com.knight.springboot.mybatis.annotation.ColumnAppend;
+import com.knight.springboot.mybatis.annotation.ColumnTransfer;
 import lombok.Data;
 
 @Data

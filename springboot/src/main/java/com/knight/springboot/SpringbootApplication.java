@@ -10,7 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @SpringBootApplication
 @EnableAspectJAutoProxy(exposeProxy=true, proxyTargetClass=true)
 @ComponentScan("com.knight.springboot.*")
-@MapperScan("com.knight.springboot.mapper")
+@MapperScan("com.knight.springboot.mybatis.mapper")
 public class SpringbootApplication {
 
 	public static void main(String[] args) {

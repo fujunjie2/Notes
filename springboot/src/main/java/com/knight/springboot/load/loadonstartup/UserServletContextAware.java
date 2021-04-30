@@ -1,4 +1,4 @@
-package com.knight.springboot.LoadOnStartUp;
+package com.knight.springboot.load.loadonstartup;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;

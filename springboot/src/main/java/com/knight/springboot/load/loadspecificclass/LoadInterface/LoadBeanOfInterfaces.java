@@ -1,4 +1,4 @@
-package com.knight.springboot.LoadSpecificClass.LoadInterface;
+package com.knight.springboot.load.loadspecificclass.LoadInterface;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

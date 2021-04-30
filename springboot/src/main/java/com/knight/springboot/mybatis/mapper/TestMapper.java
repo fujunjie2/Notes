@@ -1,4 +1,4 @@
-package com.knight.springboot.mapper;
+package com.knight.springboot.mybatis.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.knight.springboot.entity.Test;

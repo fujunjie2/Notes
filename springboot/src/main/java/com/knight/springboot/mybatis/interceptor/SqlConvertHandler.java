@@ -1,6 +1,7 @@
-package com.knight.springboot.mybatis;
+package com.knight.springboot.mybatis.interceptor;
 
 
+import com.knight.springboot.mybatis.annotation.ColumnTransfer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -43,7 +44,7 @@ public class SqlConvertHandler implements Interceptor {
 
         Object obj = metaObject.getValue("parameterHandler.parameterObject");
 
-        if (obj instanceof  ColumnTransfer) {
+        if (obj instanceof ColumnTransfer) {
 
         }
 

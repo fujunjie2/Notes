@@ -1,4 +1,4 @@
-package com.knight.springboot.LoadOnStartUp;
+package com.knight.springboot.load.loadonstartup;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

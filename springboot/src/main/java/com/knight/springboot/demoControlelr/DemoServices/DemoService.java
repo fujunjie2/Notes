@@ -4,13 +4,14 @@ package com.knight.springboot.demoControlelr.DemoServices;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.knight.springboot.entity.Test;
-import com.knight.springboot.mapper.TestMapper;
+import com.knight.springboot.mybatis.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class DemoService {
@@ -41,7 +42,9 @@ public class DemoService {
 
 
     public void simpleMethod() {
-        System.out.println(this.getClass().getName());
+        CompletableFuture.runAsync(()-> {
+            System.out.println(1);
+        }, threadPoolTaskExecutor);
     }
 
     @Transactional

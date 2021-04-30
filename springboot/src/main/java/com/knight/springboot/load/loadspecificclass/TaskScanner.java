@@ -1,4 +1,4 @@
-package com.knight.springboot.LoadSpecificClass;
+package com.knight.springboot.load.loadspecificclass;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
