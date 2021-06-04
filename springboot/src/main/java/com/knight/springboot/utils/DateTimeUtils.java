@@ -34,16 +34,40 @@ public class DateTimeUtils {
         return instant.atZone(zoneId).toLocalDateTime();
     }
 
-    public static LocalDateTime monthBeginDate(long timeStamp) {
-        LocalDateTime mt = toLocalDateTime(timeStamp);
-        return LocalDateTime.of(mt.getYear(), mt.getMonthValue(), 1, 0, 0, 0);
+    /**
+     *
+     * @param time 某个日期
+     * @return time 所在的月份的第一天， 时分秒为 00:00:00
+     */
+    public static LocalDateTime monthBeginDate(LocalDateTime time) {
+        return LocalDateTime.of(LocalDate.from(time.with(TemporalAdjusters.firstDayOfMonth())), LocalTime.MIN);
     }
 
+    /**
+     *
+     * @param timeStamp utc 时间戳
+     * @return timeStamp 所在的月份的第一天， 时分秒为 00:00:00
+     */
+    public static LocalDateTime monthBeginDate(long timeStamp) {
+        LocalDateTime mt = toLocalDateTime(timeStamp);
+        return monthBeginDate(mt);
+    }
+
+    /**
+     *
+     * @param timeStamp utc 时间戳
+     * @return timeStamp 所在的月份的最后一天日期， 时分秒为 00:00:00
+     */
     public static LocalDateTime monthEndDate(long timeStamp) {
         LocalDateTime med = toLocalDateTime(timeStamp);
         return LocalDateTime.of(LocalDate.from(med.with(TemporalAdjusters.lastDayOfMonth())), LocalTime.MIN);
     }
 
+    /**
+     *
+     * @param timeStamp utc 时间戳
+     * @return timeStamp 所在的月份的最后一天日期， 时分秒为 23:59:59.999_999_999
+     */
     public static LocalDateTime monthEndDateTime(long timeStamp) {
         LocalDateTime med = toLocalDateTime(timeStamp);
         return LocalDateTime.of(LocalDate.from(med.with(TemporalAdjusters.lastDayOfMonth())), LocalTime.MAX);
