@@ -1,7 +1,10 @@
 package com.knight.springboot.utils;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
+import java.util.Date;
 
 /**
  * 地球分24个时区，相邻的时区时间差一小时
@@ -14,16 +17,55 @@ import java.time.ZoneOffset;
  *
  * 润秒：当“世界时”与“原子时” 之间时刻相差超过0.9秒时，就在“协调世界时”上加上或减去1秒，以尽量接近“世界时”，这就是闰秒
  *
- * System.currentTimeMillis() 获取的是当前计算机时间 距离 (1970-01-01 00:00:00) 之间的毫秒数差。
- * 而计算机的时间则与当前时区相关。中国虽然跨了多个时区，但是时间统一使用东八时区，即北京时间(CST = GMT + 8)。
+ * System.currentTimeMillis() 获取的是当前计算机时间(UTC) 距离 (1970-01-01 00:00:00 UTC时间) 之间的毫秒数差。
+ * 而计算机的时间则与当前时区相关。中国虽然跨了5个时区，但是时间统一使用东八时区，即北京时间(CST = GMT + 8)。
  *
- * LocalDateTime.toEpochSeconds 返回的是距离 (1970-01-01 00:00:00) 之间的 秒差
+ * LocalDateTime.toEpochSeconds 返回的是距离 (1970-01-01 00:00:00 UTC时) 之间的 秒差
  */
 public class DateTimeUtils {
 
-
-    public static void main(String[] args) {
-        System.out.println(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(8)));
-        System.out.println(System.currentTimeMillis());
+    public static LocalDateTime toLocalDateTime(Long timeStamp) {
+        return LocalDateTime.ofEpochSecond(timeStamp / 1000, 999_999_999, ZoneOffset.ofHours(8));
     }
+
+    public static LocalDateTime toLocalDateTime(Date date) {
+        Instant instant = date.toInstant();
+        ZoneId zoneId = ZoneId.of(ZoneId.SHORT_IDS.get("CTT"));
+        return instant.atZone(zoneId).toLocalDateTime();
+    }
+
+    public static LocalDateTime monthBeginDate(long timeStamp) {
+        LocalDateTime mt = toLocalDateTime(timeStamp);
+        return LocalDateTime.of(mt.getYear(), mt.getMonthValue(), 1, 0, 0, 0);
+    }
+
+    public static LocalDateTime monthEndDate(long timeStamp) {
+        LocalDateTime med = toLocalDateTime(timeStamp);
+        return LocalDateTime.of(LocalDate.from(med.with(TemporalAdjusters.lastDayOfMonth())), LocalTime.MIN);
+    }
+
+    public static LocalDateTime monthEndDateTime(long timeStamp) {
+        LocalDateTime med = toLocalDateTime(timeStamp);
+        return LocalDateTime.of(LocalDate.from(med.with(TemporalAdjusters.lastDayOfMonth())), LocalTime.MAX);
+    }
+
+
+    public static String format(LocalDateTime time, String format) {
+        return DateTimeFormatter.ofPattern(format).format(time);
+    }
+    public static String format(Long timeStamp, String format) {
+        LocalDateTime time = toLocalDateTime(timeStamp);
+        return format(time, format);
+    }
+
+    public static String format(Date date, String format) {
+        LocalDateTime time = toLocalDateTime(date);
+        return format(time, format);
+    }
+
+    public static LocalDateTime parse(String dateStr, String format) {
+        return LocalDateTime.parse(dateStr, DateTimeFormatter.ofPattern(format));
+    }
+
+
 }
